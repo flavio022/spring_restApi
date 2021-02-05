@@ -2,6 +2,7 @@ package com.cursomc.dto;
 
 import com.cursomc.services.validation.ClienteInsert;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 @ClienteInsert
@@ -14,7 +15,7 @@ public class ClienteNewDTO implements Serializable{
 	private String cpfOuCnpj;
 
 	private Integer tipo;
-	
+	@NotEmpty(message = "Preenchimento obrigatório!")
 	private String senha;
 	
 	private String logradouro;
