@@ -2,6 +2,7 @@ package com.cursomc.services;
 
 import com.cursomc.domain.*;
 import com.cursomc.domain.enums.EstadoPagamento;
+import com.cursomc.domain.enums.Perfil;
 import com.cursomc.domain.enums.TipoCliente;
 import com.cursomc.respositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -189,8 +190,13 @@ public class DBService {
 
         cli1.getTelefones().addAll(Arrays.asList("947934752", "93838393"));
 
-        Cliente cli2 = new Cliente(null, "Thaisa Keller Naves de Morais", "flavio.danilo02@gmail.com",bCryptPasswordEncoder.encode("1234567"), "31628382740", TipoCliente.PESSOAFISICA);
+        Cliente cli2 = new Cliente(null, "Julio Bunda", "flavio.danilo02@gmail.com",bCryptPasswordEncoder.encode("1234567"), "31628382740", TipoCliente.PESSOAFISICA);
         cli2.getTelefones().addAll(Arrays.asList("93883321", "34252625"));
+        cli2.addPerfil(Perfil.ADMIN);
+
+        Cliente cli3 = new Cliente(null, "Thaisa Keller Naves de Morais", "ahahahahahahahaha@gmail.com",bCryptPasswordEncoder.encode("1234567"), "43664643764", TipoCliente.PESSOAFISICA);
+
+        cli3.getTelefones().addAll(Arrays.asList("947934752", "93838393"));
 
         Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", cli1, c1);
         Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cli1, c2);
