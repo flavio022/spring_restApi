@@ -1,6 +1,7 @@
 package com.cursomc.config;
 
 import com.cursomc.security.JWTAuthenticationFilter;
+import com.cursomc.security.JWTAuthorizationFilter;
 import com.cursomc.security.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -59,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(PUBLIC_MATCHERS).permitAll()
                 .anyRequest().authenticated();
         http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtils));
+        http.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtUtils,userDetailsService));
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
     @Override
