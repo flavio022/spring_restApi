@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
+import com.cursomc.services.S3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -37,9 +38,11 @@ public class CursomcApplication implements CommandLineRunner{
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
 	}
+	@Autowired
+	private S3Service s3Service;
 
 	@Override
 	public void run(String... args) throws Exception {
-
+		s3Service.uploadFile("/home/flavio/Downloads/undraw_women_day_2m89_preview_rev_1.png");
 	}
 }
