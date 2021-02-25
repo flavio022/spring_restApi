@@ -1,5 +1,6 @@
 package com.cursomc.services;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,7 @@ import com.cursomc.dto.ClienteNewDTO;
 import com.cursomc.respositories.ClienteRepository;
 import com.cursomc.respositories.EnderecoRepository;
 import com.cursomc.services.exceptions.ObjectNotFoundException;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ClienteService {
@@ -34,6 +36,8 @@ public class ClienteService {
 	private ClienteRepository repo;
 	@Autowired
 	private EnderecoRepository enderecoRepository;
+	@Autowired
+	private S3Service s3Service;
 
 	public List<Cliente> findAll() {
 		return repo.findAll();
@@ -104,5 +108,7 @@ public class ClienteService {
 		newObj.setNome(obj.getNome());
 		newObj.setEmail(obj.getEmail());
 	}
-
+	public URI uploadProfilePicture(MultipartFile multipartFile){
+		return s3Service.uploadFile(multipartFile);
+	}
 }

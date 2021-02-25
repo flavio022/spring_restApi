@@ -37,12 +37,9 @@ public class CursomcApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
-	}
-	@Autowired
-	private S3Service s3Service;
 
+	}
 	@Override
 	public void run(String... args) throws Exception {
-		s3Service.uploadFile("/home/flavio/Downloads/undraw_women_day_2m89_preview_rev_1.png");
 	}
 }
